@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
+import { FaGithub, FaPlus, FaSpinner } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
@@ -64,7 +64,7 @@ export default class Main extends Component {
     return (
       <Container>
         <h1>
-          <FaGithubAlt />
+          <FaGithub />
           Repositórios
         </h1>
 
@@ -76,7 +76,7 @@ export default class Main extends Component {
             onChange={this.handleInputChange}
           />
 
-          <SubmitButton loading={loading}>
+          <SubmitButton loading={loading ? 1 : 0}>
             {loading ? (
               <FaSpinner color="#FFF" size={14} />
             ) : (

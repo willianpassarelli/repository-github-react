@@ -80,17 +80,6 @@ export const IssueList = styled.ul`
             color: #7159c1;
           }
         }
-
-        span {
-          background: #7159c1;
-          color: #fff;
-          border-radius: 3px;
-          font-size: 12px;
-          font-weight: 600;
-          height: 20px;
-          padding: 3px 4px;
-          margin-left: 10px;
-        }
       }
 
       p {
@@ -100,4 +89,16 @@ export const IssueList = styled.ul`
       }
     }
   }
+`;
+
+export const IssueLabel = styled.span`
+  flex: 1;
+  background: ${props => `#${props.color}`};
+  color: #fff;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  height: 20px;
+  padding: 3px 4px;
+  margin-left: 10px;
 `;

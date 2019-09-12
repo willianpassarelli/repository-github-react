@@ -3,24 +3,19 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../../services/api';
 
-import { Loading, Owner, IssueList } from './styles';
+import { Loading, Owner, IssueList, IssueLabel } from './styles';
 
 import Container from '../../components/Container';
 
 export default class Repository extends Component {
-  static propTypes = {
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        repository: PropTypes.string,
-      }),
-    }).isRequired,
-  };
-
-  state = {
-    repository: {},
-    issues: [],
-    loading: true,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      repository: {},
+      issues: [],
+      loading: true,
+    };
+  }
 
   async componentDidMount() {
     const { match } = this.props;
@@ -67,7 +62,9 @@ export default class Repository extends Component {
                 <strong>
                   <a href={issue.html_url}>{issue.title}</a>
                   {issue.labels.map(label => (
-                    <span key={String(label.id)}>{label.name}</span>
+                    <IssueLabel key={String(label.id)} color={label.color}>
+                      {label.name}
+                    </IssueLabel>
                   ))}
                 </strong>
                 <p>{issue.user.login}</p>
@@ -79,3 +76,11 @@ export default class Repository extends Component {
     );
   }
 }
+
+Repository.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      repository: PropTypes.string,
+    }),
+  }).isRequired,
+};
